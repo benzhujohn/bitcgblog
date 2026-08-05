@@ -50,4 +50,51 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   }
+
+  // 资讯列表翻页：仅 articles/index.html（含 #pagination）生效，每页 9 篇
+  const pag = document.getElementById("pagination");
+  if (pag) {
+    const grid = document.querySelector(".news-grid");
+    if (grid) {
+      const cards = Array.prototype.slice.call(grid.querySelectorAll(".news-card"));
+      const PER_PAGE = 9;
+      const total = Math.max(1, Math.ceil(cards.length / PER_PAGE));
+      let current = 1;
+
+      const scrollTop = function () { window.scrollTo({ top: 0, behavior: "smooth" }); };
+
+      const render = function () {
+        const start = (current - 1) * PER_PAGE;
+        cards.forEach(function (c, i) {
+          c.style.display = (i >= start && i < start + PER_PAGE) ? "" : "none";
+        });
+        pag.innerHTML = "";
+
+        const prev = document.createElement("button");
+        prev.className = "page-btn";
+        prev.textContent = "‹ 上一页";
+        prev.disabled = current === 1;
+        prev.addEventListener("click", function () { if (current > 1) { current--; render(); scrollTop(); } });
+        pag.appendChild(prev);
+
+        for (let p = 1; p <= total; p++) {
+          (function (p) {
+            const b = document.createElement("button");
+            b.className = "page-btn" + (p === current ? " active" : "");
+            b.textContent = p;
+            b.addEventListener("click", function () { current = p; render(); scrollTop(); });
+            pag.appendChild(b);
+          })(p);
+        }
+
+        const next = document.createElement("button");
+        next.className = "page-btn";
+        next.textContent = "下一页 ›";
+        next.disabled = current === total;
+        next.addEventListener("click", function () { if (current < total) { current++; render(); scrollTop(); } });
+        pag.appendChild(next);
+      };
+      render();
+    }
+  }
 })();

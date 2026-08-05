@@ -129,6 +129,18 @@ a { text-decoration: none; color: inherit; }
 .news-excerpt { font-size: 14px; color: var(--muted); }
 .news-date { font-size: 12px; color: #b3aac4; margin-top: auto; }
 
+/* 资讯列表：副标题 + 翻页（每页 9 篇） */
+.block-sub { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+.pagination { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 30px; }
+.page-btn {
+  min-width: 42px; padding: 9px 14px; border: 1px solid #ffd6ea; background: #fff0f7;
+  color: var(--muted); border-radius: 10px; cursor: pointer; font-size: 14px; font-weight: 600;
+  transition: all .15s ease;
+}
+.page-btn:hover:not(:disabled) { border-color: var(--pink); color: var(--pink); }
+.page-btn.active { background: linear-gradient(135deg, var(--pink), var(--purple)); color: #fff; border-color: transparent; }
+.page-btn:disabled { opacity: .4; cursor: not-allowed; }
+
 /* ===== Footer ===== */
 .site-footer { background: #2b2440; color: #d9d3e8; padding: 32px 0; text-align: center; font-size: 13px; }
 .site-footer .copyright { margin-top: 8px; color: #9a92b5; }
