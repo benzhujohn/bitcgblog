@@ -1,0 +1,155 @@
+:root {
+  --pink: #ff6ea9;
+  --purple: #8b5cf6;
+  --sky: #38bdf8;
+  --ink: #2b2440;
+  --muted: #6b6580;
+  --bg: #fff5fb;
+  --card-bg: #ffffff;
+  --radius: 16px;
+  --shadow: 0 6px 20px rgba(139, 92, 246, 0.10);
+  --shadow-hover: 0 12px 30px rgba(255, 110, 169, 0.25);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+
+/* ===== Header：初始隐藏，滚动显现 ===== */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ffe3f1;
+  transform: translateY(-100%);
+  transition: transform .35s ease;
+}
+.site-header.show { transform: translateY(0); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.logo { font-size: 22px; font-weight: 800; letter-spacing: .5px; }
+.logo-mark { color: var(--purple); }
+.logo-acg { color: var(--pink); }
+.top-nav { display: flex; gap: 20px; font-weight: 600; color: var(--muted); }
+.top-nav a:hover { color: var(--pink); }
+
+/* ===== Hero / 全屏搜索 ===== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  background:
+    radial-gradient(1200px 600px at 15% -10%, #ffe3f1 0%, transparent 55%),
+    radial-gradient(1000px 500px at 110% 10%, #e0f2fe 0%, transparent 50%),
+    linear-gradient(135deg, #fff0f7 0%, #ede9fe 55%, #e0f2fe 100%);
+}
+.hero-inner { width: 100%; max-width: 720px; }
+.hero-title { font-size: 44px; font-weight: 800; color: var(--ink); letter-spacing: .5px; }
+.hero-sub { margin-top: 12px; color: var(--muted); font-size: 17px; }
+
+.search-box {
+  margin: 34px auto 0;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.engine-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 16px; }
+.engine {
+  border: 1px solid #ffd6ea; background: #fff0f7; color: var(--muted);
+  padding: 7px 14px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 600;
+  transition: all .15s ease;
+}
+.engine:hover { border-color: var(--pink); }
+.engine.active { background: linear-gradient(135deg, var(--pink), var(--purple)); color: #fff; border-color: transparent; }
+
+.search-form { display: flex; gap: 10px; }
+#searchInput {
+  flex: 1; border: 2px solid #ffd6ea; border-radius: 14px;
+  padding: 15px 16px; font-size: 16px; outline: none; transition: border-color .15s;
+}
+#searchInput:focus { border-color: var(--pink); }
+.search-btn {
+  border: none; border-radius: 14px; padding: 0 30px; font-size: 16px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, var(--pink), var(--purple)); cursor: pointer;
+}
+.search-btn:hover { opacity: .92; }
+.search-more { margin-top: 16px; font-size: 13px; color: var(--muted); line-height: 2; }
+.search-more a { color: var(--purple); margin: 0 2px; }
+.search-more a:hover { color: var(--pink); text-decoration: underline; }
+
+.scroll-hint {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%);
+  font-size: 30px; color: var(--purple); line-height: 1;
+  animation: bounce 1.8s infinite;
+}
+@keyframes bounce { 0%,100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, 8px); } }
+
+/* ===== Blocks ===== */
+.block { padding: 64px 0; }
+.block-alt { background: #fff; }
+.block-title { font-size: 24px; font-weight: 800; margin-bottom: 24px; }
+
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.card {
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--card-bg); border: 1px solid #ffe3f1; border-radius: var(--radius);
+  padding: 18px; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--pink); }
+.card-emoji { font-size: 30px; }
+.card-name { font-weight: 700; font-size: 16px; }
+.card-desc { font-size: 13px; color: var(--muted); }
+
+/* ===== News ===== */
+.news-head { display: flex; align-items: baseline; justify-content: space-between; }
+.news-more { color: var(--purple); font-weight: 600; }
+.news-more:hover { color: var(--pink); }
+.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 8px; }
+.news-card {
+  display: flex; flex-direction: column; gap: 8px;
+  background: var(--card-bg); border: 1px solid #ffe3f1; border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--pink); }
+.news-tag { align-self: flex-start; background: #fff0f7; color: var(--pink); font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+.news-title { font-size: 17px; font-weight: 700; }
+.news-excerpt { font-size: 14px; color: var(--muted); }
+.news-date { font-size: 12px; color: #b3aac4; margin-top: auto; }
+
+/* ===== Footer ===== */
+.site-footer { background: #2b2440; color: #d9d3e8; padding: 32px 0; text-align: center; font-size: 13px; }
+.site-footer .copyright { margin-top: 8px; color: #9a92b5; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .hero-title { font-size: 30px; }
+  .hero-sub { font-size: 15px; }
+  .search-box { padding: 18px; border-radius: 20px; }
+  #searchInput { padding: 13px 14px; font-size: 15px; }
+  .search-btn { padding: 0 20px; }
+  .block { padding: 48px 0; }
+  .card-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .top-nav { gap: 12px; font-size: 13px; }
+  .top-nav a:nth-child(4) { display: none; } /* 移动端隐藏“搜索”锚点（已在首屏） */
+}
+
+@media (max-width: 420px) {
+  .hero-title { font-size: 26px; }
+  .engine { padding: 6px 11px; font-size: 12px; }
+  .logo { font-size: 19px; }
+  .top-nav { gap: 10px; font-size: 12px; }
+}
