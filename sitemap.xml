@@ -186,4 +186,16 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://8bitacg.com/articles/2026-08-18-rezero-season4-recapture.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://8bitacg.com/articles/2026-08-18-phantom-blade-zero-preview.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
