@@ -102,6 +102,19 @@ a { text-decoration: none; color: inherit; }
 .block-alt { background: #fff; }
 .block-title { font-size: 24px; font-weight: 800; margin-bottom: 24px; }
 
+.editor-box {
+  margin: 26px 0;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(255,110,169,.08));
+  border: 1px solid #ffd6ea;
+  border-left: 4px solid var(--purple);
+  border-radius: var(--radius);
+}
+.editor-box p { margin: 8px 0; font-size: 15px; }
+.editor-box strong { color: var(--purple); }
+
+.article-hero { width: 100%; border-radius: var(--radius); margin: 18px 0 24px; box-shadow: var(--shadow); display: block; }
+
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
 .card {
   display: flex; flex-direction: column; gap: 4px;
